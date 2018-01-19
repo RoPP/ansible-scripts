@@ -1,5 +1,5 @@
 ---
-overpass_version: "v0.7.54.10"
+overpass_version: "v0.7.54.12"
 overpass_pbf_region: "mayotte"
 overpass_pbf_root_url: "http://download.geofabrik.de/europe/france"
 overpass_replication_url: "{{ overpass_pbf_root_url }}/{{ overpass_pbf_region }}-updates"
