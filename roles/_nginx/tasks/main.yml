@@ -1,0 +1,32 @@
+---
+- name: install nginx package
+  apt:
+    pkg: nginx
+    update_cache: yes
+
+- name: set nginx_webroot_dir
+  set_fact:
+    nginx_webroot_dir: "{{ work_dir }}/www"
+
+- name: create nginx_webroot_dir
+  file:
+    path: "{{ nginx_webroot_dir }}"
+    state: directory
+    owner: www-data
+    group: www-data
+
+- name: set real_ip_header
+  copy:
+    src: files/real_ip.conf
+    dest: /etc/nginx/conf.d/real_ip.conf
+
+- name: remove default site
+  file:
+    path: /etc/nginx/sites-{available|enabled}/default
+    state: absent
+
+- name: add nginx_status
+  copy:
+    src: files/nginx_status.conf
+    dest: /etc/nginx/sites-enabled/nginx_status
+  notify: reload nginx

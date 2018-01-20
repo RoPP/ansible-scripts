@@ -1,0 +1,15 @@
+---
+- name: install libwww-perl
+  apt:
+    pkg: libwww-perl
+
+- name: enable munin plugins for nginx
+  file:
+    state: link
+    src: "/usr/share/munin/plugins/{{ item }}"
+    dest: "/etc/munin/plugins/{{ item }}"
+  notify:
+    - restart munin-node
+  with_items:
+    - nginx_request
+    - nginx_status
