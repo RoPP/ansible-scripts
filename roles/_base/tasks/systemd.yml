@@ -1,0 +1,24 @@
+---
+- name: active persistant journal
+  file:
+    path: /var/log/journal
+    state: directory
+
+- name: set journal permissions
+  command: systemd-tmpfiles --create --prefix /var/log/journal
+
+- name: keep existing journal
+  command: journalctl --flush
+  args:
+    creates: /run/log/journal
+
+- name: uninstall rsyslog
+  apt:
+    name: rsyslog
+    state: absent
+
+# TODO
+# x active persistant journal
+# x remove rsyslog
+# x datetimectl (not needed)
+# ️️  fail2ban

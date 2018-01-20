@@ -1,0 +1,35 @@
+---
+- name: install base packages
+  apt:
+    pkg: "{{ packages|join(',') }}"
+    update_cache: yes
+  vars:
+    packages:
+      - git
+      - etckeeper
+      - htop
+      - nano
+      - vim-nox
+      - tmux
+      - screen
+
+- name: create project and work dir
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    force: no
+  with_items:
+    - "{{ project_dir }}"
+    - "{{ work_dir }}"
+
+- name: create service user
+  user:
+    name: "{{ base_user }}"
+    home: "{{ project_dir }}"
+    system: yes
+    generate_ssh_key: yes
+
+- import_tasks: systemd.yml
+  when: ansible_service_mgr == 'systemd'
