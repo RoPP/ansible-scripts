@@ -1,6 +1,0 @@
-[lxc-host]
-localhost ansible_connection=local
-
-[overpass-api]
-
-[cachet]

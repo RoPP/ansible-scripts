@@ -1,4 +1,4 @@
 *.retry
 .vscode/tags
 ansible_cache
-inventories/dev/host_vars/localhost
+
