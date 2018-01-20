@@ -1,0 +1,5 @@
+---
+- name: install php-fpm package
+  apt:
+    pkg: php-fpm
+    update_cache: yes
