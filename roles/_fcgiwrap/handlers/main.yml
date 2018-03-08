@@ -1,0 +1,5 @@
+---
+- name: restart fcgiwrap
+  service:
+    name: fcgiwrap
+    state: restarted
