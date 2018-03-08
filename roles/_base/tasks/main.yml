@@ -12,6 +12,13 @@
       - vim-nox
       - tmux
       - screen
+      - unattended-upgrades
+
+- name: create APT auto-upgrades configuration
+  copy:
+    src: files/apt.conf.d/20auto-upgrades
+    dest: /etc/apt/apt.conf.d/20auto-upgrades
+  notify: restart unattended-upgrades
 
 - name: create project and work dir
   file:
