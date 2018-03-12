@@ -26,11 +26,6 @@ The `overpass_version` refer to version used in http://dev.overpass-api.de/relea
 
 `overpass_replication_interval` can be `minute` or `day`.
 
-Dependencies
-------------
-
-This role depends on `shared/project-account.yml`.
-
 Example Playbook
 ----------------
 

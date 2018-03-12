@@ -1,2 +1,0 @@
-# Number of instances to launch
-DAEMON_OPTS="-c 4 -f"
