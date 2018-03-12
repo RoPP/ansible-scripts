@@ -1,0 +1,32 @@
+---
+- name: set service_user and work_dir
+  set_fact:
+    project_dir: "{{ base_project_dir }}/{{ service_user }}"
+    work_dir: "{{ base_project_dir }}/{{ service_user }}"
+
+- name: set ssd_dir
+  set_fact:
+    ssd_dir: "{{ base_ssd_dir }}/{{ service_user }}"
+  when: "base_ssd_dir is defined"
+
+- name: create service user
+  user:
+    name: "{{ service_user }}"
+    home: "{{ project_dir }}"
+    system: yes
+    generate_ssh_key: yes
+
+- name: create work_dir
+  file:
+    path: "{{ work_dir }}"
+    state: directory
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+
+- name: create ssd_dir
+  file:
+    path: "{{ ssd_dir }}"
+    state: directory
+    owner: "{{ service_user }}"
+    group: "{{ service_user }}"
+  when: "ssd_dir is defined"

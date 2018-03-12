@@ -1,4 +1,0 @@
----
-base_user: "{{ service_user }}"
-project_dir: /data/project
-work_dir: /data/work

@@ -12,7 +12,24 @@
       - vim-nox
       - tmux
       - screen
+      - apt-transport-https
+      - ssmtp
       - unattended-upgrades
+
+- name: remove useless packages
+  apt:
+    pkg: "{{ packages|join(',') }}"
+    state: absent
+    purge: yes
+  vars:
+    packages:
+      - exim4
+      - exim4-base
+      - exim4-config
+      - exim4-daemon-light
+
+# FIXME:
+#- name: configure ssmtp
 
 - name: create APT auto-upgrades configuration
   copy:
@@ -28,15 +45,11 @@
     group: root
     force: no
   with_items:
-    - "{{ project_dir }}"
-    - "{{ work_dir }}"
+    - "{{ base_project_dir }}"
+    - "{{ base_work_dir }}"
 
-- name: create service user
-  user:
-    name: "{{ base_user }}"
-    home: "{{ project_dir }}"
-    system: yes
-    generate_ssh_key: yes
+- import_tasks: service-user.yml
+  when: "service_user is defined"
 
 - import_tasks: systemd.yml
   when: ansible_service_mgr == 'systemd'
