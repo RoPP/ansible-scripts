@@ -1,10 +1,4 @@
 // Placez vos paramètres dans ce fichier pour remplacer les paramètres par défaut et les paramètres utilisateur.
 {
-  "files.associations": {
-    "hosts": "properties",
-    "*.yml": "ansible",
-    "**/host_vars/*": "ansible",
-    "**/group_vars/*": "ansible"
-  },
   "python.formatting.provider": "yapf"
 }
