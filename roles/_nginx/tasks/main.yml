@@ -30,3 +30,10 @@
     src: files/nginx_status.conf
     dest: /etc/nginx/sites-enabled/nginx_status
   notify: reload nginx
+
+- name: test if munin-node is installed
+  stat:
+    path: /usr/sbin/munin-node
+  register: munin
+- import_tasks: munin.yml
+  when: munin.stat.exists
