@@ -1,0 +1,6 @@
+---
+- name: add telegraf plugin for nginx
+  copy:
+    src: files/inputs.nginx.conf
+    dest: /etc/telegraf/telegraf.d/inputs.nginx.conf
+  notify: reload telegraf
