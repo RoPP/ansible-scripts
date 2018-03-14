@@ -1,0 +1,13 @@
+---
+- name: install overpass-status
+  template:
+    src: templates/overpass-status.sh
+    dest: /usr/local/bin
+    mode: 0755
+  notify: restart telegraf
+
+- name: add telegraf plugin for overpass-api
+  template:
+    src: templates/inputs.overpass-api.conf.j2
+    dest: /etc/telegraf/telegraf.d/inputs.overpass-api.conf
+  notify: restart telegraf
