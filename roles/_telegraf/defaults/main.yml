@@ -1,0 +1,7 @@
+---
+telegraf:
+  influxdb:
+    urls: []
+    database: ""
+    username: ""
+    password: ""

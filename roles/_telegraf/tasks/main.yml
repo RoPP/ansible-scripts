@@ -1,0 +1,28 @@
+---
+- name: install telegraf
+  apt:
+    pkg: telegraf
+    update_cache: yes
+
+- name: comment telegraf.conf
+  replace:
+    path: /etc/telegraf/telegraf.conf
+    regexp: "{{ item }}"
+    replace: '# \1'
+  with_items:
+    - '^(\[\[outputs\.influxdb\]\])'
+    - '^(  urls = \["http://127\.0\.0\.1:8086"\] # required)'
+    - '^(  database = "telegraf" # required)'
+    - '^(  retention_policy = "")'
+    - '^(  write_consistency = "any")'
+    - '^(  timeout = "5s")'
+  notify: reload telegraf
+
+- name: configure telegraf
+  template:
+    src: "templates/{{ item }}.conf.j2"
+    dest: "/etc/telegraf/telegraf.d/{{ item }}.conf"
+  with_items:
+    - outputs.influxdb
+    - inputs.net
+  notify: reload telegraf

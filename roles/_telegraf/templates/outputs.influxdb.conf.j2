@@ -1,0 +1,5 @@
+[[outputs.influxdb]]
+  urls = ["{{ telegraf.influxdb.urls|join('", "') }}"]
+  database = "{{ telegraf.influxdb.database }}"
+  username = "{{ telegraf.influxdb.username }}"
+  password = "{{ telegraf.influxdb.password }}"
