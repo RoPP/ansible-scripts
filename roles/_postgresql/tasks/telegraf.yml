@@ -1,0 +1,6 @@
+---
+- name: add telegraf plugin for postgresql
+  template: 
+    src: templates/inputs.postgresql.conf.j2
+    dest: /etc/telegraf/telegraf.d/inputs.postgresql.conf
+  notify: reload telegraf
