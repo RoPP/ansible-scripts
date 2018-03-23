@@ -20,9 +20,7 @@
   file:
     path: "{{ project_dir }}/osm-3s_{{ overpass_version }}"
     state: directory
-  become: yes
-  become_user: "{{ overpass_user }}"
-
+    owner: "{{ overpass_user }}"
 
 - name: download {{ overpass_version }} release of overpass-api
   unarchive:
