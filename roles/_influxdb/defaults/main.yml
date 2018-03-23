@@ -1,0 +1,7 @@
+---
+influxdb:
+  ansible:
+    password: "foobar"
+  admin_users: []
+  readonly_users: []
+  writeonly_users: []

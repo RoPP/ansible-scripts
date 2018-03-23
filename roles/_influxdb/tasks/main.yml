@@ -1,0 +1,47 @@
+---
+- name: install influxdb server
+  apt:
+    pkg: influxdb
+    update_cache: yes
+
+- name: enable authentication
+  ini_file:
+    path: /etc/influxdb/influxdb.conf
+    section: http
+    option: "  auth-enabled"
+    value: "true"
+  notify: reload influxdb
+
+- name: restart influxdb
+  service:
+    name: influxdb
+    state: restarted
+
+- name: wait for influxdb
+  wait_for:
+    port: 8086
+    delay: 3
+
+# FIXME: use influxdb module (need ansible 2.5)
+- name: add ansible user
+  command: /usr/bin/influx -username ansible -password "{{ influxdb.ansible.password }}" -execute "CREATE USER ansible WITH PASSWORD '{{ influxdb.ansible.password }}' WITH ALL PRIVILEGES"
+
+- name: create databases
+  command: /usr/bin/influx -username ansible -password "{{ influxdb.ansible.password }}" -execute "CREATE DATABASE {{ item.database }}"
+  with_items: "{{ influxdb.readonly_users + influxdb.writeonly_users | default([]) }}"
+
+- name: add full access users
+  command: /usr/bin/influx -username ansible -password "{{ influxdb.ansible.password }}" -execute "CREATE USER {{ item.username }} WITH PASSWORD '{{ item.password }}' WITH ALL PRIVILEGES"
+  with_items: "{{ influxdb.admin_users | default([]) }}"
+
+- name: add users
+  command: /usr/bin/influx -username ansible -password "{{ influxdb.ansible.password }}" -execute "CREATE USER {{ item.username }} WITH PASSWORD '{{ item.password }}'"
+  with_items: "{{ influxdb.readonly_users + influxdb.writeonly_users | default([]) }}"
+
+- name: grant read access to read only users
+  command: /usr/bin/influx -username ansible -password "{{ influxdb.ansible.password }}" -execute "GRANT READ ON {{ item.database }} TO {{ item.username }}"
+  with_items: "{{ influxdb.readonly_users | default([]) }}"
+
+- name: grant write access to write only users
+  command: /usr/bin/influx -username ansible -password "{{ influxdb.ansible.password }}" -execute "GRANT WRITE ON {{ item.database }} TO {{ item.username }}"
+  with_items: "{{ influxdb.writeonly_users | default([]) }}"
