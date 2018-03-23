@@ -1,0 +1,5 @@
+---
+- name: install chronograf
+  apt:
+    pkg: chronograf
+    update_cache: yes
