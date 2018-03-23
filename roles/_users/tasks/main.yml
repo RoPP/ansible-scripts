@@ -1,0 +1,21 @@
+---
+- name: create users
+  user:
+    name: "{{ item.name }}"
+    shell: "{{ item.shell }}"
+    uid: "{{ item.uid }}"
+    groups: adm {% if item.superadmin %}, sudo{% endif %}
+  with_items: "{{ users }}"
+
+- name: add ssh public key
+  authorized_key:
+    user: "{{ item.name }}"
+    key: "{{ item.pubkey }}"
+  with_items: "{{ users }}"
+
+- name: add local admin user
+  user:
+    name: "{{ item.name }}"
+    groups: sudo
+    append: yes
+  with_items: "{{ local_admins|default([]) }}"
