@@ -22,4 +22,3 @@
 - include: services.yml
 - include: web.yml
 - include: munin.yml
-- include: restart.yml
