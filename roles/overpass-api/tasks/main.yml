@@ -1,3 +1,4 @@
+---
 - name: set overpass_database_dir
   set_fact:
     overpass_database_dir: "{{ ssd_dir|default(work_dir) }}/database"
