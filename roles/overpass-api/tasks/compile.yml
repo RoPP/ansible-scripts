@@ -24,7 +24,7 @@
 
 - name: download {{ overpass_version }} release of overpass-api
   unarchive:
-    src: "http://dev.overpass-api.de/releases/osm-3s_{{ overpass_version }}.tar.gz"
+    src: "http://dev.overpass-api.de/releases/osm-3s_v{{ overpass_version }}.tar.gz"
     dest: "{{ project_dir }}/osm-3s_{{ overpass_version }}"
     remote_src: true
     creates: "{{ project_dir }}/osm-3s_{{ overpass_version }}/Makefile.am"
