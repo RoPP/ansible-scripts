@@ -6,11 +6,15 @@ ConditionPathExists=!{{ overpass_database_dir }}/replicate_id
 Type=oneshot
 User={{ overpass_user }}
 ExecStart=/usr/local/bin/overpass-setup.py
-ExecStart=+/bin/systemctl restart overpass-dispatcher.service
-ExecStart=/usr/local/bin/dispatcher --rate-limit=32
-ExecStart=+/bin/systemctl restart overpass-diff-applier.service
-ExecStart=+/bin/systemctl restart overpass-areas-dispatcher.service
-ExecStart=+/bin/systemctl restart overpass-areas-builder.service
+ExecStartPost=+/bin/systemctl restart overpass-dispatcher.service
+ExecStartPost=+/bin/systemctl restart overpass-copy-id.service
+ExecStartPost=/bin/sleep 5
+ExecStartPost=+/bin/systemctl restart overpass-diff-downloader.service
+ExecStartPost=+/bin/systemctl restart overpass-diff-applier.service
+ExecStartPost=+/bin/systemctl restart overpass-areas-dispatcher.service
+ExecStartPost=+/bin/systemctl restart overpass-areas-builder.service
+ExecStartPost=/usr/local/bin/dispatcher --rate-limit=32
+ExecStartPost=-+/bin/systemctl restart telegraf.service
 
 [Install]
 WantedBy=multi-user.target
