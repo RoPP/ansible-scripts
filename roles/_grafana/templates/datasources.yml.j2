@@ -1,0 +1,11 @@
+---
+datasources:
+- name: Telegraf
+  type: influxdb
+  access: proxy
+  url: {{ grafana.influxdb.urls.0 }}
+  user: {{ grafana.influxdb.username }}
+  password: {{ grafana.influxdb.password }}
+  database: {{ grafana.influxdb.database }}
+  isDefault: true
+  editable: false

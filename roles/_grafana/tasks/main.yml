@@ -1,0 +1,27 @@
+---
+- name: add grafana apt key
+  apt_key:
+    url: https://packagecloud.io/gpg.key
+    state: present
+
+- name: add grafana repository
+  apt_repository:
+    repo: deb https://packagecloud.io/grafana/stable/debian/ stretch main
+
+- name: install grafana
+  apt:
+    pkg: grafana
+    update_cache: yes
+  notify: restart grafana
+
+- name: enable grafana service
+  systemd:
+    name: grafana-server
+    enabled: yes
+    daemon_reload: yes
+
+- name: add influxdb datasources
+  template:
+    src: templates/datasources.yml.j2
+    dest: /etc/grafana/provisioning/datasources/influxdb.yml
+  notify: restart grafana
