@@ -21,4 +21,10 @@
 - import_tasks: set_up_database.yml
 - import_tasks: services.yml
 - import_tasks: web.yml
+
+- name: test if munin-node is installed
+  stat:
+    path: /usr/sbin/munin-node
+  register: munin
 - import_tasks: munin.yml
+  when: munin.stat.exists
