@@ -1,0 +1,5 @@
+---
+- name: install kapacitor
+  apt:
+    pkg: kapacitor
+    update_cache: yes
