@@ -209,6 +209,12 @@ osm148.openstreetmap.fr
 [wordpress]
 osm142.openstreetmap.fr
 
+[influxdb]
+osm152.openstreetmap.fr
+
+[grafana]
+osm149.openstreetmap.fr
+
 # user creation
 
 [apavie] # Adrien P.
