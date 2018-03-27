@@ -2,3 +2,4 @@
 .vscode/tags
 ansible_cache
 inventories/dev
+.vault_pass
