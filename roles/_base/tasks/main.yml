@@ -1,10 +1,7 @@
 ---
 - name: install base packages
   apt:
-    pkg: "{{ packages|join(',') }}"
-    update_cache: yes
-  vars:
-    packages:
+    pkg:
       - git
       - etckeeper
       - htop
@@ -16,18 +13,17 @@
       - ssmtp
       - unattended-upgrades
       - fish
+    update_cache: yes
 
 - name: remove useless packages
   apt:
-    pkg: "{{ packages|join(',') }}"
-    state: absent
-    purge: yes
-  vars:
-    packages:
+    pkg:
       - exim4
       - exim4-base
       - exim4-config
       - exim4-daemon-light
+    state: absent
+    purge: yes
 
 # FIXME:
 #- name: configure ssmtp
