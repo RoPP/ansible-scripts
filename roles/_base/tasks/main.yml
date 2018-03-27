@@ -15,6 +15,7 @@
       - apt-transport-https
       - ssmtp
       - unattended-upgrades
+      - fish
 
 - name: remove useless packages
   apt:
