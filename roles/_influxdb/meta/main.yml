@@ -3,7 +3,7 @@ galaxy_info:
   author: Rodolphe Pelloux-Prayer
   company: OpenStreetMap FR
   license: GPLv2
-  min_ansible_version: 2.3
+  min_ansible_version: 2.5
 
 dependencies:
   - _influxdata

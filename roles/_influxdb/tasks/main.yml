@@ -23,26 +23,30 @@
         delay: 3
   when: enable_auth.changed
 
-# FIXME: use influxdb module (need ansible 2.5)
-- name: add ansible user
-  command: /usr/bin/influx -username ansible -password "{{ influxdb.ansible.password }}" -execute "CREATE USER ansible WITH PASSWORD '{{ influxdb.ansible.password }}' WITH ALL PRIVILEGES"
+- name: add admin users
+  influxdb_user:
+    login_username: "ansible"
+    login_password: "{{ influxdb.admins.ansible.password }}"
+    user_name: "{{ item.key }}"
+    user_password: "{{ item.value.password }}"
+    admin: yes
+  with_dict: "{{ influxdb.admins }}"
+
+- name: add normal users
+  influxdb_user:
+    login_username: "ansible"
+    login_password: "{{ influxdb.admins.ansible.password }}"
+    user_name: "{{ item.key }}"
+    user_password: "{{ item.value.password }}"
+  with_dict: "{{ influxdb.users }}"
 
 - name: create databases
-  command: /usr/bin/influx -username ansible -password "{{ influxdb.ansible.password }}" -execute "CREATE DATABASE {{ item.database }}"
-  with_items: "{{ influxdb.readonly_users + influxdb.writeonly_users | default([]) }}"
-
-- name: add full access users
-  command: /usr/bin/influx -username ansible -password "{{ influxdb.ansible.password }}" -execute "CREATE USER {{ item.username }} WITH PASSWORD '{{ item.password }}' WITH ALL PRIVILEGES"
-  with_items: "{{ influxdb.admin_users | default([]) }}"
-
-- name: add users
-  command: /usr/bin/influx -username ansible -password "{{ influxdb.ansible.password }}" -execute "CREATE USER {{ item.username }} WITH PASSWORD '{{ item.password }}'"
-  with_items: "{{ influxdb.readonly_users + influxdb.writeonly_users | default([]) }}"
+  influxdb_database:
+    login_username: "ansible"
+    login_password: "{{ influxdb.admins.ansible.password }}"
+    database_name: "{{ item }}"
+  with_items: "{{ influxdb.databases }}"
 
 - name: grant read access to read only users
-  command: /usr/bin/influx -username ansible -password "{{ influxdb.ansible.password }}" -execute "GRANT READ ON {{ item.database }} TO {{ item.username }}"
-  with_items: "{{ influxdb.readonly_users | default([]) }}"
-
-- name: grant write access to write only users
-  command: /usr/bin/influx -username ansible -password "{{ influxdb.ansible.password }}" -execute "GRANT WRITE ON {{ item.database }} TO {{ item.username }}"
-  with_items: "{{ influxdb.writeonly_users | default([]) }}"
+  command: /usr/bin/influx -username ansible -password "{{ influxdb.admins.ansible.password }}" -execute "GRANT {{ item.value.grant }} ON {{ item.value.database }} TO {{ item.key }}"
+  with_dict: "{{ influxdb.users }}"
