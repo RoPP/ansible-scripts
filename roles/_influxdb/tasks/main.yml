@@ -10,17 +10,18 @@
     section: http
     option: "  auth-enabled"
     value: "true"
+  register: enable_auth
   notify: reload influxdb
 
 - name: restart influxdb
-  service:
-    name: influxdb
-    state: restarted
-
-- name: wait for influxdb
-  wait_for:
-    port: 8086
-    delay: 3
+  block:
+    - service:
+        name: influxdb
+        state: restarted
+    - wait_for:
+        port: 8086
+        delay: 3
+  when: enable_auth.changed
 
 # FIXME: use influxdb module (need ansible 2.5)
 - name: add ansible user
