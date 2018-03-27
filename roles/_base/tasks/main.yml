@@ -1,4 +1,15 @@
 ---
+- name: install apt-transport-https
+  apt:
+    pkg: apt-transport-https
+    state: present
+
+- name: set sources.list
+  copy:
+    src: files/sources.list
+    dest: /etc/apt/sources.list
+    mode: 0644
+
 - name: install base packages
   apt:
     pkg:
@@ -9,7 +20,6 @@
       - vim-nox
       - tmux
       - screen
-      - apt-transport-https
       - ssmtp
       - unattended-upgrades
       - fish
