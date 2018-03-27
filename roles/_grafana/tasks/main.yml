@@ -20,6 +20,14 @@
     enabled: yes
     daemon_reload: yes
 
+- name: copy config file
+  copy:
+    src: files/grafana.ini
+    dest: /etc/grafana/grafana.ini
+    mode: 0640
+    group: grafana
+  notify: restart grafana
+
 - name: add influxdb datasources
   template:
     src: templates/datasources.yml.j2
