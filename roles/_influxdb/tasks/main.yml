@@ -1,8 +1,15 @@
 ---
-- name: install influxdb server
+- name: install influxdb (+ requests and pip for ansible)
   apt:
-    pkg: influxdb
+    pkg:
+      - influxdb
+      - python-requests
+      - python-pip
     update_cache: yes
+
+- name: install python-influxdb (for ansible)
+  pip:
+    name: influxdb
 
 - name: enable authentication
   ini_file:
