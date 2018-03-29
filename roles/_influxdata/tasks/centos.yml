@@ -1,0 +1,5 @@
+---
+- name: add influxdata repository
+  yum_repository:
+    baseurl: "https://repos.influxdata.com/rhel/{{ ansible_distribution_version }}/{{ ansible_architecture }}/stable"
+    gpgkey: "https://repos.influxdata.com/influxdb.key"

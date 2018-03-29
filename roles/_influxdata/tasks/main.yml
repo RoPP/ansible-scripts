@@ -1,10 +1,6 @@
 ---
-- name: add influxdata apt key
-  apt_key:
-    url: https://repos.influxdata.com/influxdb.key
-    state: present
+- include_role: debian.yml
+  when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
 
-- name: add influxdata repository
-  apt_repository:
-    repo: deb https://repos.influxdata.com/debian stretch stable
-    state: present
+- include_role: centos.yml
+  when: ansible_distribution == "Centos"
