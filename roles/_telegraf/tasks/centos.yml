@@ -1,0 +1,5 @@
+---
+- name: install telegraf
+  yum:
+    name: telegraf
+    update_cache: yes
