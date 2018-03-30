@@ -1,6 +1,6 @@
 ---
-- include_role: debian.yml
+- include_tasks: debian.yml
   when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
 
-- include_role: centos.yml
+- include_tasks: centos.yml
   when: ansible_distribution == "Centos"
