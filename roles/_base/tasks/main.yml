@@ -32,6 +32,8 @@
       - exim4-base
       - exim4-config
       - exim4-daemon-light
+      - postfix
+      - postfix-sqlite
     state: absent
     purge: yes
 
