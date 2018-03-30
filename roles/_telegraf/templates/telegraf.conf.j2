@@ -1,3 +1,8 @@
+[global_tags]
+  distribution = "{{ ansible_distribution|lower }}"
+  release = "{{ ansible_distribution_release|lower }}"
+  {% if proxmox_var is defined %}proxmox = "{{ proxmox_var.host }}"{% endif %}
+
 [agent]
   interval = "10s"
   round_interval = true
