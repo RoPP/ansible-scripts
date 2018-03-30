@@ -5,18 +5,10 @@
 - include_tasks: centos.yml
   when: ansible_distribution == "Centos"
 
-- name: comment telegraf.conf
-  replace:
-    path: /etc/telegraf/telegraf.conf
-    regexp: "{{ item }}"
-    replace: '# \1'
-  with_items:
-    - '^(\[\[outputs\.influxdb\]\])'
-    - '^(  urls = \["http://127\.0\.0\.1:8086"\] # required)'
-    - '^(  database = "telegraf" # required)'
-    - '^(  retention_policy = "")'
-    - '^(  write_consistency = "any")'
-    - '^(  timeout = "5s")'
+- name: add telegraf.conf
+  template:
+    src: templates/telegraf.conf.j2
+    dest: /etc/telegraf/telegraf.conf
   notify: reload telegraf
 
 - name: configure telegraf
