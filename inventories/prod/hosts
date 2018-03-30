@@ -204,6 +204,13 @@ osm28.openstreetmap.fr
 
 [overpass-api]
 osm147.openstreetmap.fr
+
+[nginx]
+osm147.openstreetmap.fr
+osm148.openstreetmap.fr
+
+[fcgiwrap]
+osm147.openstreetmap.fr
 osm148.openstreetmap.fr
 
 [wordpress]

@@ -1,4 +1,15 @@
 ---
+base_project_dir: /data/project
+base_work_dir: /data/work
+
+users:
+  -
+    name: thrrp
+    uid: 1310
+    shell: /usr/bin/fish
+    pubkey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFJcEDSCRsczuIa+CS1BShbpEEGd1546VJ889kqZP3C6"
+    superadmin: yes
+
 influxdb:
   users:
     telegraf:
