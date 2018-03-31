@@ -3,3 +3,15 @@
   apt:
     name: telegraf
     update_cache: yes
+
+- name: install pkg-status.sh
+  copy:
+    src: files/pkg-status.sh
+    dest: /usr/local/bin/pkg-status.sh
+    mode: 0755
+
+- name: add telegraf plugin
+  copy:
+    src: files/inputs.pkg.conf
+    dest: /etc/telegraf/telegraf.d/inputs.pkg.conf
+  notify: reload telegraf
