@@ -43,7 +43,9 @@ if [ $LAG ]; then
   echo "overpass-api database_lag=$LAG"
 fi
 
-echo "overpass-api connections_active=$ACTIVE,connections_waiting=$WAITING"
-echo "overpass-api requests_started=$STARTED,requests_finished=$FINISHED"
-echo "overpass-api memory_used=$MEMORY"
-echo "overpass-api timeout=$TIMEOUT"
+if [ $ACTIVE ]; then
+  echo "overpass-api connections_active=$ACTIVE,connections_waiting=$WAITING"
+  echo "overpass-api requests_started=$STARTED,requests_finished=$FINISHED"
+  echo "overpass-api memory_used=$MEMORY"
+  echo "overpass-api timeout=$TIMEOUT"
+fi
