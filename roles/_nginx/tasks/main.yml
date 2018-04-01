@@ -4,13 +4,9 @@
     pkg: nginx
     update_cache: yes
 
-- name: set nginx_webroot_dir
-  set_fact:
-    nginx_webroot_dir: "{{ work_dir }}/www"
-
-- name: create nginx_webroot_dir
+- name: create webroot_dir
   file:
-    path: "{{ nginx_webroot_dir }}"
+    path: "{{ webroot_dir }}"
     state: directory
     owner: www-data
     group: www-data

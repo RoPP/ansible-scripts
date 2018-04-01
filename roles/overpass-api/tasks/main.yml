@@ -3,11 +3,7 @@
   set_fact:
     overpass_database_dir: "{{ ssd_dir|default(work_dir) }}/database"
 
-- name: set overpass_webroot_dir
-  set_fact:
-    overpass_webroot_dir: "{{ work_dir }}/www"
-
-- name: create overpass_database_dir and overpass_webroot_dir
+- name: create overpass_database_dir and webroot_dir
   file:
     path: "{{ item }}"
     state: directory
@@ -15,7 +11,7 @@
     group: "{{ overpass_user }}"
   with_items:
     - "{{ overpass_database_dir }}"
-    - "{{ overpass_webroot_dir }}"
+    - "{{ webroot_dir }}"
 
 - import_tasks: compile.yml
 - import_tasks: set_up_database.yml

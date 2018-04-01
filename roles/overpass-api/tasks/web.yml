@@ -16,7 +16,7 @@
 - name: install html page
   template:
     src: "templates/{{ item }}"
-    dest: "{{ overpass_webroot_dir }}"
+    dest: "{{ webroot_dir }}"
   with_items:
     - index.html
     - api.html

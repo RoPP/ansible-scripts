@@ -59,16 +59,16 @@
   args:
     chdir: "{{ project_dir }}/osm-3s_{{ overpass_version }}"
 
-- name: create {{ overpass_webroot_dir }}/api dir
+- name: create {{ webroot_dir }}/api dir
   file:
-    path: "{{ overpass_webroot_dir }}/api"
+    path: "{{ webroot_dir }}/api"
     state: directory
 
 - name: copy used cgi-bin scripts
   copy:
     remote_src: true
     src: "{{ project_dir }}/osm-3s_{{ overpass_version }}/cgi-bin/{{ item }}"
-    dest: "{{ overpass_webroot_dir }}/api"
+    dest: "{{ webroot_dir }}/api"
     mode: 0750
     owner: "www-data"
     group: "www-data"

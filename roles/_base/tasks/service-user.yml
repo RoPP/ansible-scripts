@@ -1,14 +1,4 @@
 ---
-- name: set service_user and work_dir
-  set_fact:
-    project_dir: "{{ base_project_dir }}/{{ service_user }}"
-    work_dir: "{{ base_project_dir }}/{{ service_user }}"
-
-- name: set ssd_dir
-  set_fact:
-    ssd_dir: "{{ base_ssd_dir }}/{{ service_user }}"
-  when: "base_ssd_dir is defined"
-
 - name: create service user
   user:
     name: "{{ service_user }}"
