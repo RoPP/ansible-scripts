@@ -1,0 +1,44 @@
+---
+- name: stop containers
+  lxc_container:
+    name: "{{ item.name }}"
+    state: stopped
+  with_items: "{{ containers }}"
+  tags:
+    - never
+    - stop_containers
+
+- name: delete existing containers
+  lxc_container:
+    name: "{{ item.name }}"
+    state: absent
+  with_items: "{{ containers }}"
+  tags:
+    - never
+    - destroy_containers
+
+- name: start containers
+  lxc_container:
+    name: "{{ item.name }}"
+    template: debian
+    template_options: --release stretch
+    state: started
+    container_command: |
+      count=0
+      until [[ $(ip link show eth1 up 2&>/dev/null) || $count -gt 50 ]]; do sleep .1; let count++; done
+      apt update
+      apt install -y acl python sudo fish
+      useradd {{ lxc_containers.user }} --uid {{ users[lxc_containers.user].uid }} --shell $(type -p {{ users[lxc_containers.user].shell }}) --groups adm,sudo
+      sed -i 's/%sudo	ALL=(ALL:ALL) ALL/%sudo	ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers
+      mkdir -p /home/{{ lxc_containers.user }}/.ssh -m 0700
+      echo "{{ users[lxc_containers.user].pubkey }}" > /home/{{ lxc_containers.user }}/.ssh/authorized_keys
+      chown {{ lxc_containers.user }}:{{ lxc_containers.user }} /home/{{ lxc_containers.user }}/ -R
+      chmod 600 /home/{{ lxc_containers.user }}/.ssh/authorized_keys
+  register: "containers_info"
+  with_items: "{{ containers }}"
+
+- name: register hosts in inventory
+  add_host:
+    name: "{{ item.lxc_container.ips.0 }}"
+    groups: "{{ item.item.services|join(',') }}"
+  with_items: "{{ containers_info.results }}"
