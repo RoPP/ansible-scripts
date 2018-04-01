@@ -20,16 +20,16 @@
     enabled: yes
     daemon_reload: yes
 
-- name: install libcap2-bin
-  apt:
-    pkg: libcap2-bin
-    state: present
-
 - name: add cap_net_bind_service capability to grafana
-  capabilities:
-    path: /usr/sbin/grafana-server
-    capability: cap_net_bind_service+ep
-    state: present
+  copy:
+    src: files/grafana-server.service.d
+    dest: /etc/systemd/system/
+  register: cap_net
+
+- name: reload systemd
+  systemd:
+    daemon_reload: yes
+  when: cap_net.changed
 
 - name: copy config file
   copy:
