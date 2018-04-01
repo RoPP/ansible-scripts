@@ -18,16 +18,20 @@
 - import_tasks: services.yml
 - import_tasks: web.yml
 
-- name: test if munin-node is installed
-  stat:
-    path: /usr/sbin/munin-node
-  register: munin
-- import_tasks: munin.yml
-  when: munin.stat.exists
+- block:
+  - name: test if munin-node is installed
+    stat:
+      path: /usr/sbin/munin-node
+    register: munin
+  - import_tasks: munin.yml
+    when: munin.stat.exists
+  tags: munin
 
-- name: test if telegraf is installed
-  stat:
-    path: /usr/bin/telegraf
-  register: telegraf
-- import_tasks: telegraf.yml
-  when: telegraf.stat.exists
+- block:
+  - name: test if telegraf is installed
+    stat:
+      path: /usr/bin/telegraf
+    register: telegraf
+  - import_tasks: telegraf.yml
+    when: telegraf.stat.exists
+  tags: telegraf
