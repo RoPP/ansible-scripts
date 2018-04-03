@@ -5,10 +5,17 @@
 - include_tasks: centos.yml
   when: ansible_distribution == "Centos"
 
+- name: test if /proc/diskstats exists
+  stat:
+    path: /proc/diskstats
+  register: diskstats
+
 - name: add telegraf.conf
   template:
     src: templates/telegraf.conf.j2
     dest: /etc/telegraf/telegraf.conf
+  vars:
+    has_diskstats: diskstats.stat.exists
   notify: reload telegraf
 
 - name: configure telegraf
