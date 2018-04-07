@@ -1,0 +1,6 @@
+---
+letsencrypt_hosts:
+  - osm103.openstreetmap.fr
+  - analyser.openstreetmap.fr
+  - api.openstreetmap.fr
+  - garmin.openstreetmap.fr

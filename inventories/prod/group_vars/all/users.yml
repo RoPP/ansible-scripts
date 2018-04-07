@@ -1,0 +1,120 @@
+---
+users:
+  jocelyn:
+    uid: 1203
+    shell: /bin/bash
+    pubkey: >
+      ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDA9KCCXVbI7k/TuizmznwFgP5mv2cvpp7b2EGVvSS+m4lDWSYsZzxUQHWT8F/NQCjLp6ZoYBScrYLB2rPz0TlSHMoxFL3anK/AWxdrAcA0OFrSPYsPJsZNbZS55vdm9QEOsjEIwZ4wx80hOdU6sW7R1QD6aBznlEl6uZLHrhmZw0RTTN2IMjblI9QNLodc6uA/dyNnQ3hIYcxIX/uT3hslkDUuG8OXZExIEH0YhUr0sFobPMFYoW1hUswDHkwC4xVDSBofCSgMG/XZzcKzBvJSDykVLDY6G4J+ljsiD2mdF9TUDU1Ef0vMG+LQ35Vs8OPMYnhGIaGHVyTZOzu0qtFG9EcJgjaYiGxc6ws7EKLOnTygp4rm7lP+aGY7ZmNMaZkHgtf/x3tQNerl7V9rAUDoGYsL4lgx5pJFB/nFSltnG1rzoumHBZ2TeSHeqf4uVNCA9UIqChi1rmflNRoV6i1dAL9IBj7shcMWc49/yx26SJFBXUHemfaH+ZVB1BhYOmG5lHwin1bEc/6ZO64FQXJu9AL18jiXjnaLxK5HgteYApf4QwHbbyYmMQP34My+vlAguHLWGGOJP9X0v0fxbdnKvbF0LBEpV2cPAKPJKgDyZWvCuc+Zl9HuxNQoWzx8VxUjenBDRRJlE13OzreU7fjRrQMBVA0Mj1oDnPRNtltoDw== jocelyn@localhost
+      ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCrxOknPYQLIHE+eu3zdIzMVhHiBX/3caabeidvCHjPcvGlLfc+tOoiLv/Z1zvDkG0D4OtHFdm4yJsEoZ9TmvI9DpZvRfElAnuzWxUDJCZu1lazhMSG8ZgnAg8LYYzHK6vAvf5l0yv/6TWszelpczoOoALgmiW0g0T43Zo62wiJmkUNm5uAi6kjuMixravCKPB1vjwDGxSXv+eaacF3cIKxvO39PpvedT5ll1lrafi7URs6uuUhbDx66DXcn6zHMW8zglkmPyUNPOdu1pD26J2gK8gwQSF+dha/fP2zBZBLyPD4ifqdtba4g8ylMr0dNAqp0ikZTnkBmAjKnn62QRUx jocelyn@yggdras
+      ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDdvTd4GuB2if8nXc7xvHc/L9Vq5gF2uqZq8P+Ai1lbB3DaFMSSCMlPw/QPmK4UxuB8W5hVRfa/uEOwafBaf61xbc/RVUwRIdOM8lGVE/RpZd/CZu3UfsNkcSgMaiGNfPfb1H9BK43TY0qDP5yIOSSx0DEs07uPZ1DotSoFDcEKFqUMiky1b07civBN+BI4Jjyak2iBlgfTQtTJdXd4bTAl+LfcK4Z14wyAauTKMMcYqFBdAsXpavkbBBNyzjbCgqynm5ZJTT+PnPp4E7npMrCjCzYveIAET6CAec0Kxq3duI4Srsz7YhkCN5O9fQhJJrR67ERuV0h1lwWNmIQco+fXRMZjuIug+rqyloUzncefdeMPLDEl23sX/RZLhnesEKVdWk8BZPvXHirY5TJOXyhhi5M2a9ZoAJsoLzEZW2F7n5fCg/t/ylnZYLnwOCV09q9cMAJz2S45SFwT6jpYMWNeCVOhepUazs/U/QjzM3S1ZmTyQoaVaI/+1lA7tsVZTcbp12vPqKJqEhda64cx+/sOxssUKHl9E1ZRGt4hW8oVh9VBrqjOT3a5c0fsQXwDQb9nCvukWXsNiI1oAllkwE43FvQKKcqRRAoM7WoFhLclNXr5O5EY87YAvjk9rdUMaz+86OcEDkLtlXX4x66eG9JZbRoY/FcHXcLHllpJsAmBIQ== jocelyn@vps051
+    superadmin: yes
+  sly:
+    uid: 1209
+    shell: /bin/bash
+    pubkey: "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAIEA1RvSObw6rRta3GqlL2lV1M8zxMrWHug1LJN9fOk7pIMwCxnS/TBjQ/RFwhdm8ToLtPKkq2+HJlrdytEDKZzeKEvqAaDbmJqVlRz41UXJYPkHH81vwN4QG4KoKy7Mh/pHwF2woP59kISj1TlwMaOfStZyXKRLmJ6YPbpwBMdZPq0= sly@sly"
+    superadmin: yes
+  cquest:
+    uid: 1202
+    shell: /bin/bash
+    pubkey: "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAzeqX+F13E7IFtrnY0caRQQJeNkWsJoVz5rEza/Ut0WFJhg5jYO2/t8Y37py8HjcgQl7eFJK58NzUsleMkTVh3vOxcrLNg4LCUvT8xscyYWJS5BYMT9WSOdBa0q2Vgz6DEOIXYPW3TJlouoSFAuxhFPQencmcFiFEMrTDiOeBq96cKU55mEzxBEYNGZBswV6V9FQBnf+sUPFl5X7T7V0FjuuhdmYu/AubKnh0ICCj1VvEA59j0ZkgF1OLqO1DxRcdLX8nkFINPQsbAuKZEgsbGjRqZySAjomDXJjQwuRoMCr+4nkM9R2P8EgQl6I+EiFCPJ09dr/LAYtXV0JKkO5Dgw== cquest@mac-pro-de-cquest.local"
+    superadmin: yes
+  apavie:
+    uid: 1211
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  cgiquello:
+    uid: 1212
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  driss:
+    uid: 1224
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  etienne:
+    uid: 1213
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  eloks:
+    uid: 1214
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  fred:
+    uid: 1205
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  guillaumeamat:
+    uid: 1235
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  hamlet:
+    uid: 1305
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  jben:
+    uid: 1206
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  jgcailton:
+    uid: 1207
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  lcombe:
+    uid: 1215
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  nlehuby:
+    uid: 1220
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  marc_marc:
+    uid: 1216
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  panieravide:
+    uid: 1230
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  rodolphe:
+    uid: 1208
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  redfox:
+    uid: 1209
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  thrrp:
+    uid: 1310
+    shell: /usr/bin/fish
+    pubkey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFJcEDSCRsczuIa+CS1BShbpEEGd1546VJ889kqZP3C6"
+    superadmin: no
+  tyndare:
+    uid: 1212
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  vdct:
+    uid: 1217
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no
+  ybon:
+    uid: 1223
+    shell: /bin/bash
+    pubkey: ""
+    superadmin: no

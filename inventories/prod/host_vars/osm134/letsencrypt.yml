@@ -1,0 +1,3 @@
+---
+letsencrypt_hosts:
+  - osm134.openstreetmap.fr

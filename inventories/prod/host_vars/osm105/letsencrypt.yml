@@ -1,0 +1,6 @@
+---
+letsencrypt_hosts:
+  - osm105.openstreetmap.fr
+  - a.layers.openstreetmap.fr
+  - b.layers.openstreetmap.fr
+  - c.layers.openstreetmap.fr

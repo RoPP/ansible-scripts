@@ -1,0 +1,6 @@
+---
+letsencrypt_hosts:
+  - osm101.openstreetmap.fr
+  - docs.openstreetmap.fr
+  - trac.openstreetmap.fr
+  - adherents.openstreetmap.fr

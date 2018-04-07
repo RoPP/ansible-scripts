@@ -1,0 +1,7 @@
+---
+letsencrypt_hosts:
+  - osm104.openstreetmap.fr
+  - bano.openstreetmap.fr
+  - cadastre.openstreetmap.fr
+  - imagery.openstreetmap.fr
+  - tms.cadastre.openstreetmap.fr

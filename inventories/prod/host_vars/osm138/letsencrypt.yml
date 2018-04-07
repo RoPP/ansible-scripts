@@ -1,0 +1,5 @@
+---
+letsencrypt_hosts:
+  - listes.openstreetmap.fr
+  - dev.listes.openstreetmap.fr
+  - osm138.openstreetmap.fr

@@ -1,0 +1,5 @@
+---
+letsencrypt_hosts:
+  - osm110.openstreetmap.fr
+  - ae.openstreetmap.fr
+  - dev.osmose.openstreetmap.fr

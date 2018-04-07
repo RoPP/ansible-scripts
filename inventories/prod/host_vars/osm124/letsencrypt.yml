@@ -1,0 +1,3 @@
+---
+letsencrypt_hosts:
+  - buildbot.osmose.openstreetmap.fr

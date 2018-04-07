@@ -1,0 +1,3 @@
+---
+letsencrypt_hosts:
+  - osm149.openstreetmap.fr

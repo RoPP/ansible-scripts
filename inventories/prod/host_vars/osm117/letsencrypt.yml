@@ -1,0 +1,5 @@
+---
+letsencrypt_hosts:
+  - osmose.openstreetmap.fr
+  - beta.osmose.openstreetmap.fr
+  - osmose.openstreetmap.lu

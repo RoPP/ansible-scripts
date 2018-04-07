@@ -1,0 +1,5 @@
+---
+letsencrypt_hosts:
+  - osm102.openstreetmap.fr
+  - umap.openstreetmap.fr
+  - nomino.openstreetmap.fr

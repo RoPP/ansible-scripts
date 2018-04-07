@@ -1,0 +1,5 @@
+---
+letsencrypt_hosts:
+  - download.openstreetmap.fr
+  - polygons.openstreetmap.fr
+  - rawedit.openstreetmap.fr

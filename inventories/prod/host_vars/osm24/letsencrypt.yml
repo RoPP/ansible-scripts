@@ -1,0 +1,3 @@
+---
+letsencrypt_hosts:
+  - proxy-ign.openstreetmap.fr

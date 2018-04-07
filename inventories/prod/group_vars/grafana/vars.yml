@@ -1,0 +1,8 @@
+---
+grafana:
+  influxdb:
+    urls:
+      - http://osm152.openstreetmap.fr:8086
+    username: "grafana"
+    database: "{{ influxdb.users.grafana.database }}"
+    password: "{{ influxdb.users.grafana.password }}"

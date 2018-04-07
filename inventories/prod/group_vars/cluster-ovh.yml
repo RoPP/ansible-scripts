@@ -1,0 +1,67 @@
+---
+proxy:
+  -
+    logname: "taginfo"
+    websites: "taginfo.openstreetmap.fr dev.taginfo.openstreetmap.fr"
+    target: "10.1.0.118"
+  -
+    logname: "osmma"
+    websites: "tile.openstreetmap.ma dev.tile.openstreetmap.ma osmma.openstreetmap.fr"
+    target: "10.1.0.125"
+  -
+    logname: "opendata.osmose"
+    websites: "opendata.osmose.openstreetmap.fr"
+    target: "10.1.0.128"
+  -
+    logname: "munin"
+    websites: "munin.openstreetmap.fr"
+    target: "10.1.0.127"
+  -
+    logname: "maposmatic"
+    websites: "maposmatic.openstreetmap.fr"
+    target: "10.1.0.130"
+  -
+    logname: "live"
+    websites: "live.openstreetmap.fr"
+    target: "10.1.0.132"
+  -
+    logname: "bato"
+    websites: "bato.openstreetmap.fr"
+    target: "10.1.0.135"
+  -
+    logname: "layers"
+    websites: "layers.openstreetmap.fr"
+    target: "10.1.0.136"
+  -
+    logname: "forum"
+    websites: "forum.openstreetmap.fr dev.forum.openstreetmap.fr"
+    target: "10.1.0.139"
+  -
+    logname: "nextcloud"
+    websites: "nextcloud.openstreetmap.fr"
+    target: "10.1.0.141"
+  -
+    logname: "www"
+    websites: "next.openstreetmap.fr"
+    target: "10.1.0.142"
+  -
+    logname: "mastodon"
+    websites: "fr.osm.social"
+    target: "10.1.0.143"
+    config_src: "nginx-site-mastodon.j2"
+  -
+    logname: "umap"
+    websites: "dev.umap.openstreetmap.fr"
+    target: "10.1.0.144"
+  -
+    logname: "api-pic4carto"
+    websites: "api-pic4carto.openstreetmap.fr"
+    target: "10.1.0.145"
+  -
+    logname: "overpass-api"
+    websites: "api.openstreetmap.fr overpass.openstreetmap.fr"
+    target: "10.1.0.148"
+  -
+    logname: "monitor"
+    websites: "monitor.openstreetmap.fr"
+    target: "10.1.0.149"
