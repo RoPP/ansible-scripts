@@ -1,0 +1,52 @@
+---
+- block:
+  - name: create VM
+    local_action:
+      module: proxmox
+      timeout: 60
+      api_host: "{{ proxmox.apihost }}"
+      api_user: "{{ proxmox.apiuser }}"
+      api_password: "{{ proxmox.apipassword }}"
+      cpus: "{{ proxmox.cpus }}"
+      disk: "{{ proxmox.disk }}"
+      hostname: "{{ inventory_hostname }}"
+      netif: "{{ proxmox.netif }}"
+      memory: "{{ proxmox.memory }}"
+      node: "{{ proxmox.node }}"
+      onboot: yes
+      ostemplate: "local:vztmpl/{{ proxmox.ostemplate }}"
+      password: "{{ proxmox.password }}"
+      storage: "{{ proxmox.storage }}"
+      swap: "{{ proxmox.swap }}"
+      vmid: "{{ proxmox.vmid }}"
+      state: present
+    become: no
+
+  - name: start VM
+    local_action:
+      module: proxmox
+      api_host: "{{ proxmox.apihost }}"
+      api_user: "{{ proxmox.apiuser }}"
+      api_password: "{{ proxmox.apipassword }}"
+      state: started
+      vmid: "{{ proxmox.vmid }}"
+    become: no
+
+  - name: bootstrap python-apt package
+    raw: "[ -e /usr/bin/apt-get ] && apt-get update && apt-get -y install python-apt"
+
+  - name: gathering facts
+    setup:
+
+  - name: create an admin user
+    user:
+      name: "{{ proxmox.firstuser }}"
+      uid: "{{ users.get(proxmox.firstuser).uid }}"
+      groups: adm, sudo
+
+  - name: add ssh public key
+    authorized_key:
+      user: "{{ proxmox.firstuser }}"
+      key: "{{ users.get(proxmox.firstuser).pubkey }}"
+
+  when: proxmox.vmid is defined and proxmox.node is defined

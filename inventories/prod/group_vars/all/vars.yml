@@ -26,3 +26,7 @@ telegraf:
     username: "telegraf"
     database: "{{ influxdb.users.telegraf.database }}"
     password: "{{ influxdb.users.telegraf.password }}"
+
+proxmox:
+  apihost: osm26
+  apiuser: "ansible@pve"

@@ -1,6 +1,5 @@
 proxmox:
   node: osm27
-  host: osm26.openstreetmap.fr
   cpus: 4
   disk: 1000
   netif: {"net0": "name=eth0,bridge=vmbr0,ip=10.1.0.133/24,gw=10.0.0.27"}
